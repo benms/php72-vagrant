@@ -27,9 +27,9 @@ Vagrant.configure("2") do |config|
     sudo /etc/init.d/apache2 start
     #netstat -tulpen | grep apache
 
-    sudo emerge emerge dev-db/mysql
-    sudo /etc/init.d/mysql start
-    sudo rc-update add mysql default
+    # sudo emerge emerge dev-db/mysql
+    # sudo /etc/init.d/mysql start
+    # sudo rc-update add mysql default
     # /usr/bin/mysqladmin -u root -h localhost password 'root'
 
   SHELL
