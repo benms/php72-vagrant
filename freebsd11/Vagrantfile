@@ -23,7 +23,6 @@ Vagrant.configure("2") do |config|
 
   config.vm.synced_folder "./data", "/usr/local/www/apache24/data/public",
   :nfs => true, id: "vagrant-root", :mount_options => ['rw', 'vers=3', 'tcp', 'actimeo=2']
-  #config.bindfs.bind_folder "/home/dima/work/vagrants/freebsd11/data", "/usr/local/www/apache24/data/public", after: :provision
 
   # Place in /etc/rc.conf, to resolve error: exclusive locks not supported
   # rpc_lockd_enable="YES"
