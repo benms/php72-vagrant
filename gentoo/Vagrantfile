@@ -30,7 +30,7 @@ Vagrant.configure("2") do |config|
     sudo emerge emerge dev-db/mysql
     sudo /etc/init.d/mysql start
     sudo rc-update add mysql default
-    /usr/bin/mysqladmin -u root -h localhost password 'root'
+    # /usr/bin/mysqladmin -u root -h localhost password 'root'
 
   SHELL
 end
