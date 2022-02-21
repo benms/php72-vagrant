@@ -21,5 +21,5 @@ jobs:
       run: cd ubuntu; mkdir data; echo "<?php\nprintf('1+2=%s', strval(1+2));" > ./data/index.php; vagrant up
 
     - name: ssh into box after boot
-      run: cd ubuntu; vagrant ssh -c 'sudo systemctl restart apache2'; resp=$(vagrant ssh -c 'curl -s "http://localhost"'); echo "curl response - $resp"; [ $resp == "1+2=3" ] && exit 0 || exit 1
+      run: cd ubuntu; resp=$(vagrant ssh -c 'curl -s "http://localhost"'); echo "curl response - $resp"; [ $resp == "1+2=3" ] && exit 0 || exit 1
       # run: cd ubuntu; vagrant ssh -c "echo 'hello world!'"
