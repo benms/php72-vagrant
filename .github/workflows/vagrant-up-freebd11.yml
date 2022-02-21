@@ -1,4 +1,4 @@
-name: Vagrant up on Ubuntu
+name: Vagrant up on FreeBSD 11
 
 on: [push]
 
@@ -13,12 +13,12 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/.vagrant.d/boxes
-        key: ${{ runner.os }}-vagrant-${{ hashFiles('ubuntu/Vagrantfile') }}
+        key: ${{ runner.os }}-vagrant-${{ hashFiles('freebsd11/Vagrantfile') }}
         restore-keys: |
           ${{ runner.os }}-vagrant-
 
     - name: Run vagrant up
-      run: cd ubuntu; mkdir data; echo "<?php\nphpinfo();\n" > ./data/index.php; vagrant up
+      run: cd freebsd11; mkdir data; echo "<?php\nphpinfo();\n" > ./data/index.php; vagrant up
 
     - name: ssh into box after boot
-      run: cd ubuntu; vagrant ssh -c "echo 'hello world!'"
+      run: cd freebsd11; vagrant ssh -c "echo 'hello world!'"
