@@ -18,7 +18,7 @@ jobs:
           ${{ runner.os }}-vagrant-
 
     - name: Run vagrant up
-      run: cd ubuntu; mkdir data; echo "<?php\nphpinfo();\n" > ./data/index.php; vagrant up
+      run: cd freebsd12; mkdir data; echo "<?php\nphpinfo();\n" > ./data/index.php; vagrant up
 
     - name: ssh into box after boot
-      run: cd ubuntu; vagrant ssh -c "echo 'hello world!'"
+      run: cd freebsd12; vagrant ssh -c "echo 'hello world!'"

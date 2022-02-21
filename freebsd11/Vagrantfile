@@ -2,16 +2,16 @@ ENV['VAGRANT_DEFAULT_PROVIDER'] = 'virtualbox'
 
 Vagrant.configure("2") do |config|
   #config.vm.define :freebsd11p1
-  config.vm.define :freebsd113
+  config.vm.define :freebsd11
 
-  config.vm.box = "freebsd/FreeBSD-11.3-STABLE"
+  config.vm.box = "generic/freebsd11"
 
 
   config.vm.network "forwarded_port", guest: 80, host: 8181
   #config.vm.network "forwarded_port", guest:3306, host:3306 # mysql
   #config.vm.network "forwarded_port", guest: 443, host: 8443
 
-  config.vm.hostname = "freebsd113" 
+  config.vm.hostname = "freebsd11"
 
   config.vm.box_download_insecure = true
   # Set freebsd shell
