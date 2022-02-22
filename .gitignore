@@ -1,3 +1,5 @@
-ubuntu/data/*
-ubuntu/.vagrant/*
+ubuntu/data
+ubuntu/.vagrant
 ubuntu/ubuntu-bionic-18.04-cloudimg-console.log
+gentoo/data
+gentoo/.vagrant
