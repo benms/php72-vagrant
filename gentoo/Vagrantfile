@@ -11,7 +11,8 @@ Vagrant.configure("2") do |config|
     emerge --sync
     emerge --update world
     emerge app-misc/tmux app-misc/mc net-analyzer/mtr sys-process/htop
-    # emerge media-gfx/wkhtmltopdf dev-vcs/git dev-db/redis
+    # emerge media-gfx/wkhtmltopdf
+    emerge dev-vcs/git dev-db/redis
 
     #echo "PHP_TARGETS=\"php7-2\"" | tee -a /etc/portage/make.conf
     echo "USE_PHP=\"cli apache2 zip zlib mysqli pdo phar session\"" | tee -a /etc/portage/make.conf
