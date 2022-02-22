@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
     emerge dev-vcs/git dev-db/redis
 
     #echo "PHP_TARGETS=\"php7-2\"" | tee -a /etc/portage/make.conf
-    echo "USE_PHP=\"cli apache2 pdo phar session\"" | tee -a /etc/portage/make.conf
+    echo "USE_PHP=\"cli apache2 phar session\"" | tee -a /etc/portage/make.conf
     emerge dev-lang/php dev-php/xdebug
 
     #eselect php list cli
