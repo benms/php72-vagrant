@@ -10,30 +10,41 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     emerge --sync
     emerge --update world
-    emerge app-misc/tmux app-misc/mc net-analyzer/mtr sys-process/htop
-    # emerge media-gfx/wkhtmltopdf
-    emerge dev-vcs/git dev-db/redis
 
-    #echo "PHP_TARGETS=\"php7-2\"" | tee -a /etc/portage/make.conf
-    echo "USE_PHP=\"cli apache2\"" | tee -a /etc/portage/make.conf
-    emerge dev-lang/php dev-php/xdebug
+    # Install misc apps
+    emerge app-misc/tmux app-misc/mc net-analyzer/mtr sys-process/htop dev-vcs/git dev-db/redis
+    # todo: add wkhtmltopdf
+    # emerge media-gfx/wkhtmltopdf
+
+    echo "PHP_TARGETS=\"php7-4\"" | tee -a /etc/portage/make.conf
+    echo "USE=\"apache2\"" | tee -a /etc/portage/make.conf
+    emerge --update --changed-use --deep @world
+
+    # https://wiki.gentoo.org/wiki/PHP
+    USE="xml zip zlib mysql mysqli apache2 cli" emerge dev-lang/php dev-php/xdebug
 
     #eselect php list cli
+    # https://wiki.gentoo.org/wiki/Apache
     emerge www-servers/apache
-    echo "USE=\"apache2\"" | tee -a /etc/portage/make.conf
-    emerge --changed-use --deep @world
 
-    sed -e "s|APACHE2_OPTS=\"|APACHE2_OPTS=\"-D PHP -D DEFAULT_VHOST -D INFO -D LANGUAGE -D SSL -D SSL_DEFAULT_VHOST|" /etc/conf.d/apache2 | tee /etc/conf.d/apache2;
+    sed -e "s|APACHE2_OPTS=\"|APACHE2_OPTS=\"-D PHP -D DEFAULT_VHOST -D INFO|" /etc/conf.d/apache2 | tee /etc/conf.d/apache2
     #chown apache:apache /var/www/sitename
 
+    # insert multiline example
+    # cat <<EOT >> greetings.txt
+    # line 1
+    # EOT
     rc-update add apache2 default
     /etc/init.d/apache2 restart
+    # show runing apache2
     netstat -tulpen | grep apache
 
-    emerge emerge dev-db/mysql
+    emerge dev-db/mysql
     /etc/init.d/mysql start
     rc-update add mysql default
     /usr/bin/mysqladmin -u root -h localhost password 'root'
 
   SHELL
+
+  config.vm.synced_folder "./data", "/var/www/localhost/htdocs/", group: 1002, mount_options: ["dmode=775,fmode=775"]
 end
