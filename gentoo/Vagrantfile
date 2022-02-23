@@ -1,8 +1,8 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "generic/gentoo"
   config.vm.provider "virtualbox" do |vb|
-     vb.memory = "1024"
-     vb.cpus = "1"
+     vb.memory = "2048"
+     vb.cpus = "4"
      vb.customize ["modifyvm", :id, "--audio", "none"]
     #vb.customize ["sharedfolder", "add", :id, "--name", "vagrant", "--hostpath", "/home/user/tmp/share", "--automount" ]
   end

@@ -13,9 +13,9 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/.vagrant.d/boxes
-        key: ${{ runner.os }}-vagrant-${{ hashFiles('ubuntu/Vagrantfile') }}
+        key: ${{ runner.os }}-vagrant-ubuntu-${{ hashFiles('ubuntu/Vagrantfile') }}
         restore-keys: |
-          ${{ runner.os }}-vagrant-
+          ${{ runner.os }}-vagrant-ubuntu
 
     - name: Run vagrant up
       run: cd ubuntu; mkdir data; echo "<?php printf('1+2=%s', strval(1+2));" > ./data/index.php; vagrant up

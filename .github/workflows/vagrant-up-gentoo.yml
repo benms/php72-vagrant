@@ -13,9 +13,9 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/.vagrant.d/boxes
-        key: ${{ runner.os }}-vagrant-${{ hashFiles('gentoo/Vagrantfile') }}
+        key: ${{ runner.os }}-vagrant-gentoo-${{ hashFiles('gentoo/Vagrantfile') }}
         restore-keys: |
-          ${{ runner.os }}-vagrant-
+          ${{ runner.os }}-vagrant-gentoo-
 
     - name: Run vagrant up
       run: cd gentoo; mkdir data; echo "<?php\nphpinfo();\n" > ./data/index.php; vagrant up
