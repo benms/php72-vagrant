@@ -39,10 +39,11 @@ Vagrant.configure("2") do |config|
     # show runing apache2
     netstat -tulpen | grep apache
 
-    emerge dev-db/mysql
-    /etc/init.d/mysql start
-    rc-update add mysql default
-    /usr/bin/mysqladmin -u root -h localhost password 'root'
+    # https://wiki.gentoo.org/wiki/MySQL/en
+    # emerge dev-db/mysql
+    # /etc/init.d/mysql start
+    # rc-update add mysql default
+    # /usr/bin/mysqladmin -u root -h localhost password 'root'
 
   SHELL
 
