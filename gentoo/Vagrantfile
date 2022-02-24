@@ -27,7 +27,7 @@ Vagrant.configure("2") do |config|
     # https://wiki.gentoo.org/wiki/Apache
     emerge www-servers/apache
 
-    sed -e "s|APACHE2_OPTS=\"|APACHE2_OPTS=\"-D PHP -D DEFAULT_VHOST -D INFO|" /etc/conf.d/apache2 | tee /etc/conf.d/apache2
+    sed -e "s|APACHE2_OPTS=\"|APACHE2_OPTS=\"-D PHP -D DEFAULT_VHOST -D INFO|" /etc/conf.d/apache2 | sudo tee /etc/conf.d/apache2
     #chown apache:apache /var/www/sitename
 
     # insert multiline example
